@@ -9,5 +9,5 @@ if the_last_digit > 5:
     print("and is greater than 5")
 elif the_last_digit == 0:
     print("and is 0")
-else the_last_digit < 6 || =! 0:
+else:
     print(f"and is less than 6 and not 0")
