@@ -55,3 +55,7 @@ Checking for 1 arg:
 Checking for more than 2 args:
     # Remove the following test as it is causing an issue
     # >>> say_my_name("Hello", "World", "hi")
+
+Checking for only first name:
+    >>> say_my_name("Bob")
+    My name is Bob
