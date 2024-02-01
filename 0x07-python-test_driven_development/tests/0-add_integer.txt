@@ -1,0 +1,90 @@
+# How to make use of 0-add_integer.py
+
+This script introduces a function for adding integers, ``add_integer(a, b=98)``.
+
+Utilization
+===========
+
+The function ``add_integer(...)``` computes the sum of its two parameters, akin to the ``+`` operator.
+
+::
+
+    >>> add_integer = __import__('0-add_integer').add_integer
+    >>> add_integer(3, 5)
+    8
+
+::
+
+    >>> add_integer(2, -1)
+    1
+
+It also handles floating-point values.
+
+::
+
+    >>> add_integer(2.0, 3.0)
+    5
+
+Note that floats are converted to integers before addition.
+
+::
+
+    >>> add_integer(2.3, None)
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+
+Non-Numeric Inputs
+==================
+
+``add_integer()`` requires both parameters to be integers or floats.
+If either is a non-integer and non-float, a TypeError will be raised:
+
+::
+
+    >>> add_integer("hello", 3)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+::
+
+    >>> add_integer(2.3, None)
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+
+For non-integers and non-floats, a TypeError is only printed for the first parameter.
+
+::
+
+    >>> add_integer("hello", "there")
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+The function will fail if infinity is provided.
+
+::
+
+    >>> add_integer(float('inf'))
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+     
+
+::
+
+    >>> add_integer(2, float('inf'))
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+
+Similarly, with NaN values.
+
+::
+
+    >>> add_integer(float('nan'))
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
+
+::
+
+    >>> add_integer(2, float('nan'))
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
+
