@@ -30,6 +30,7 @@ def add_integer(a, b=98):
 
     return (result)
 
+
 # Test cases
 if __name__ == "__main__":
     print(add_integer(1, 2))
