@@ -14,7 +14,7 @@ import csv
 import turtle
 
 
-class BaseModel:
+class Base:
     """Base Model Class
 
     This class represents the foundation for
@@ -35,8 +35,8 @@ class BaseModel:
         if id is not None:
             self.id = id
         else:
-            BaseModel.__nb_objects += 1
-            self.id = BaseModel.__nb_objects
+            Base.__nb_objects += 1
+            self.id = Base.__nb_objects
 
     @staticmethod
     def to_json_string(list_of_dicts):
@@ -66,7 +66,7 @@ class BaseModel:
                 jsonfile.write("[]")
             else:
                 list_dicts = [obj.to_dictionary() for obj in list_of_objs]
-                jsonfile.write(BaseModel.to_json_string(list_dicts))
+                jsonfile.write(Base.to_json_string(list_dicts))
 
     @staticmethod
     def from_json_string(json_str):
@@ -110,7 +110,7 @@ class BaseModel:
         filename = str(cls.__name__) + ".json"
         try:
             with open(filename, "r") as jsonfile:
-                list_dicts = BaseModel.from_json_string(jsonfile.read())
+                list_dicts = Base.from_json_string(jsonfile.read())
                 return [cls.create(**d) for d in list_dicts]
         except FileNotFoundError:
             return []
