@@ -1,0 +1,113 @@
+Test for 7-main.py
+-------------------------------------------
+
+case 0: import
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>>
+
+-------------------------------------------
+
+case 1: Test with valid integer inputs
+Description: Test the integer_validator method with valid integer inputs.
+Input:
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("my_int", 12)
+>>> bg.integer_validator("width", 89)
+Expected Output: No exception raised
+
+-------------------------------------------
+
+case 2: Test with invalid integer input (string)
+Description: Test the integer_validator method with invalid integer input (string).
+Input:
+>>> bg = BaseGeometry()
+>>> try:
+...     bg.integer_validator("name", "John")
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+Expected Output: ValueError exception raised
+
+-------------------------------------------
+
+case 3: Test with invalid integer input (zero)
+Description: Test the integer_validator method with invalid integer input (zero).
+Input:
+>>> bg = BaseGeometry()
+>>> try:
+...     bg.integer_validator("age", 0)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+Expected Output: ValueError exception raised
+
+-------------------------------------------
+
+case 4: Test with invalid integer input (negative)
+Description: Test the integer_validator method with invalid integer input (negative).
+Input:
+>>> bg = BaseGeometry()
+>>> try:
+...     bg.integer_validator("distance", -4)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+Expected Output: ValueError exception raised
+
+-------------------------------------------
+
+Test for 7-base_geometry.py
+-------------------------------------------
+
+case 0: import
+>>> Rectangle = __import__('7-base_geometry').Rectangle
+>>>
+
+-------------------------------------------
+
+case 1: Test with valid inputs
+Description: Test creating a Rectangle object with valid width and height values.
+Input:
+>>> r = Rectangle(3, 4)
+Expected Output: No exception raised
+
+-------------------------------------------
+
+case 2: Test with invalid inputs (negative width)
+Description: Test creating a Rectangle object with a negative width.
+Input:
+>>> try:
+...     r = Rectangle(-3, 4)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+Expected Output: ValueError exception raised
+
+-------------------------------------------
+
+case 3: Test with invalid inputs (negative height)
+Description: Test creating a Rectangle object with a negative height.
+Input:
+>>> try:
+...     r = Rectangle(3, -4)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+Expected Output: ValueError exception raised
+
+-------------------------------------------
+
+case 4: Test with invalid inputs (zero width)
+Description: Test creating a Rectangle object with a zero width.
+Input:
+>>> try:
+...     r = Rectangle(0, 4)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+Expected Output: ValueError exception raised
+
+-------------------------------------------
+
+case 5: Test with invalid inputs (zero height)
+Description: Test creating a Rectangle object with a zero height.
+Input:
+>>> try:
+...     r = Rectangle(3, 0)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+Expected Output: ValueError exception raised
