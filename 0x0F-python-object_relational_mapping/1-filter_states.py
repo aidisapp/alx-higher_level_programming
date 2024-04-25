@@ -13,9 +13,12 @@ if __name__ == '__main__':
     database_name = argv[3]
     state_name = argv[4]
 
-    db_connection = MySQLdb.connect(user=user, passwd=password, db=database_name)
+    db_connection = MySQLdb.connect(
+                        user=user, passwd=password, db=database_name)
     cursor = db_connection.cursor()
-    cursor.execute("SELECT * FROM states WHERE name LIKE BINARY '{}%'".format(state_name))
+    cursor.execute(
+            "SELECT * FROM states WHERE name LIKE BINARY '{}%'".format(
+                                        state_name))
     rows = cursor.fetchall()
     for row in rows:
         print(row)
