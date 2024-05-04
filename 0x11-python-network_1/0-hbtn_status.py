@@ -1,5 +1,7 @@
-# This Python script to retrieve data from https://alx-intranet.hbtn.io/status
-# Utilizing the urllib package for HTTP requests
+#!/usr/bin/python3
+"""
+This Python script to retrieve data from https://alx-intranet.hbtn.io/status
+We'll be utilizing the urllib package for HTTP requests
 """
 
 import urllib.request
