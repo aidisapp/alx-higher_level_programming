@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Custom Python script that retrieves and displays the body of a web page from a given URL.
+Custom Python script that retrieves and displays the body
+of a web page from a given URL.
 Handles HTTP errors gracefully
 """
 
