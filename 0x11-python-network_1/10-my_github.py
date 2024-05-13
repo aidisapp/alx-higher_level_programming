@@ -1,27 +1,16 @@
 #!/usr/bin/python3
-"""
-Custom Python script that takes in a letter and
-sends a POST request to http://0.0.0.0:5000/search_user
-with the letter as a parameter
-
-Usage: ./8-json_api.py <letter>
-  - The letter is sent as the value of the variable `q`
-  - If no letter is provided, sends `q=""`
+"""Uses the GitHub API to display a GitHub ID
+based on given credentials
+Usage: ./10-my_github.py <GitHub username> <GitHub password>
+  - Uses Basic Authentication to access the ID.
 """
 
-from sys import argv
+import sys
 import requests
+from requests.auth import HTTPBasicAuth
 
 
 if __name__ == "__main__":
-    letter = "" if len(argv) == 1 else argv[1]
-    req = requests.post("http://0.0.0.0:5000/search_user", {"q": letter})
-
-    try:
-        response = req.json()
-        if response == {}:
-            print("No result")
-        else:
-            print("[{}] {}".format(response.get("id"), response.get("name")))
-    except ValueError:
-        print("Not a valid JSON")
+    auth = HTTPBasicAuth(sys.argv[1], sys.argv[2])
+    r = requests.get("https://api.github.com/user", auth=auth)
+    print(r.json().get("id"))
