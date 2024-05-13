@@ -1,23 +1,20 @@
 #!/usr/bin/python3
 """
-Custom Python script that takes in a letter and
-sends a POST request to http://0.0.0.0:5000/search_user
-with the letter as a parameter.
+Custom Python script that takes in a letter and sends a POST request to http://0.0.0.0:5000/search_user with the letter as a parameter
 
 Usage: ./8-json_api.py <letter>
   - The letter is sent as the value of the variable `q`.
-  - If no letter is provided, sends `q=""`.
+  - If no letter is provided, sends `q=""`
 """
 
 from sys import argv
 import requests
 
-
 if __name__ == "__main__":
-    letter = "" if len(argv) == 1 else argv[1
-    payload = {"q": letter}]
+    letter = "" if len(argv) == 1 else argv[1]
+    payload = {"q": letter}
 
-     r = requests.post("http://0.0.0.0:5000/search_user", data=payload)
+    r = requests.post("http://0.0.0.0:5000/search_user", data=payload)
     try:
         response = r.json()
         if response == {}:
