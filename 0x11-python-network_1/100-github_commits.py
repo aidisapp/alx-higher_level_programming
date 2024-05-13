@@ -1,10 +1,9 @@
 #!/usr/bin/python3
-"""Custom Python script that sends a POST request to
-http://0.0.0.0:5000/search_user with a given letter.
+"""
+Custom script that shows the 10 most recent commits
+on a given GitHub repository.
 
-Usage: ./8-json_api.py <letter>
-  - The letter is sent as the value of the variable `q`.
-  - If no letter is provided, sends `q=""`.
+Usage: ./100-github_commits.py <repository name> <repository owner>
 """
 
 import sys
@@ -12,15 +11,12 @@ import requests
 
 
 if __name__ == "__main__":
-    letter = "" if len(sys.argv) == 1 else sys.argv[1]
-    payload = {"q": letter}
-
-    r = requests.post("http://0.0.0.0:5000/search_user", data=payload)
+    url = f"https://api.github.com/repos/{sys.argv[2]}/{sys.argv[1]}/commits"
+    response = requests.get(url)
+    commits = response.json()
+    
     try:
-        response = r.json()
-        if response == {}:
-            print("No result")
-        else:
-            print("[{}] {}".format(response.get("id"), response.get("name")))
-    except ValueError:
-        print("Not a valid JSON")
+        for i in range(10):
+            print(f"{commits[i].get('sha')}: {commits[i].get('commit').get('author').get('name')}")
+    except IndexError:
+        pass
