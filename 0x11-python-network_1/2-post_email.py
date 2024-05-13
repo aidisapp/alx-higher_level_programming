@@ -9,7 +9,7 @@ Requirements:
 """
 
 from sys import argv
-from urllib.parse import urlencode 
+from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 
@@ -20,4 +20,4 @@ if __name__ == "__main__":
     req = Request(url, data)
 
     with urlopen(req) as response:
-        print(response.read().decode("utf-8", "replace")) 
+        print(response.read().decode("utf-8", "replace"))
