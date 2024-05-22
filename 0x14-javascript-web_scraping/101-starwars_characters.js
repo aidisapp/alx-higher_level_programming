@@ -19,4 +19,4 @@ function printCharacters (characters, index) {
       }
     }
   });
-};
+}
